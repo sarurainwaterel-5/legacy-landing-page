@@ -15,6 +15,20 @@ The system combines:
 - email notifications
 - Calendly consultation scheduling
 
+# Screenshots
+
+## Homepage
+
+![Homepage](./screenshots/homepage.png)
+
+## AI Chatbot
+
+![Chatbot](./screenshots/chatbot.png)
+
+## Docker Containers
+
+![Docker](./screenshots/docker.png)
+
 ---
 
 # Features
