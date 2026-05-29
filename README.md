@@ -119,6 +119,42 @@ EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
 NOTIFY_EMAIL=your_email@gmail.com
 
+##Deployment Architecture
+
+Local Development (Ghost Console)
+            ↓
+         GitHub
+            ↓
+         Render
+            ↓
+  legacypartners.agency
+
+##Skills Demonstrated
+
+Frontend Development
+React component architecture
+Responsive design implementation
+Tailwind CSS integration
+Asset management and branding
+DevOps & Deployment
+Docker containerization
+Git version control
+CI/CD workflow using GitHub and Render
+Custom domain configuration
+SSL certificate deployment
+Production troubleshooting
+Cloud Engineering
+Linux-based development environment
+DNS management
+Web hosting infrastructure
+Deployment automation
+
+##Challenges Solved
+Docker container configuration
+Vite production deployment
+Host authorization issues
+Render deployment troubleshooting
+
 ##Future Roadmap
 
 PostgreSQL integration
@@ -130,6 +166,10 @@ SMS automation
 Analytics dashboard
 CI/CD pipeline
 Kubernetes orchestration
+
+##Website
+
+https://legacypartners.agency
 
 ##Author
 
