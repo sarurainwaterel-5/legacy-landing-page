@@ -10,7 +10,12 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 10000,
-    allowedHosts: ['legacy-landing-page-1.onrender.com'],
+    allowedHosts: [
+  'legacy-landing-page.onrender.com',
+  'legacy-landing-page-1.onrender.com',
+  'legacypartners.agency',
+  'www.legacypartners.agency'
+],
   },
   server: {
     host: '0.0.0.0',
