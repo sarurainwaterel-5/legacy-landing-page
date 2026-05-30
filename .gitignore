@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+backend/leads.json
+.env
 node_modules/
 dist/
 .env
