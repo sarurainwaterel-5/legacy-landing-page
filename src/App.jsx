@@ -23,7 +23,7 @@ const handleSubmit = async (e) => {
   setStatus("Submitting...");
 
   try {
-    const response = await fetch("http://localhost:5000/api/leads", {
+    const response = await fetch("/api/leads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -247,7 +247,9 @@ const handleSubmit = async (e) => {
   >
     Start My Free Review
   </button>
-
+  p className="text-sm text-gray-400 mt-4 text-center">
+  🔒 Your information is kept confidential and used solely to provide requested consultations, quotes, and services. Legacy Partners does not sell, rent, or share your personal information with third parties for marketing purposes.
+</p>
   {status === "success" && (
   <div className="bg-green-900/40 border border-green-500 rounded-2xl p-6 text-center space-y-4">
     <h3 className="text-2xl font-bold text-green-300">
