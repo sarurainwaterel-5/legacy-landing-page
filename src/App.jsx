@@ -32,7 +32,7 @@ export default function LegacyPartnersLandingPage() {
     setStatus("Submitting...");
 
     try {
-      const response = await fetch("/api/leads", {
+      const response = await fetch("https://legacy-landing-page-1.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
