@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ShieldCheck, Users, HeartHandshake, Phone, CalendarDays } from "lucide-react";
+const calendlyLink = "https://calendly.com/legacy-partners-agency/30min";
 
 export default function LegacyPartnersLandingPage() {const [formData, setFormData] = useState({
   fullName: "",
@@ -108,56 +109,28 @@ const handleSubmit = async (e) => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left Content */}
-        <div>
-          <div className="inline-flex items-center gap-2 border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 rounded-full text-yellow-300 text-sm mb-8">
-            Protect What Matters Most
-          </div>
+      <div className="flex flex-col sm:flex-row gap-5">
+  <a
+    href="https://calendly.com/legacy-partners-agency/30min"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+  >
+    <CalendarDays className="w-5 h-5" />
+    Book Free Consultation
+  </a>
 
-          <h1 className="text-6xl lg:text-7xl font-black leading-tight mb-8 tracking-tight">
-            Life Insurance
-            <span className="block text-yellow-400">
-              For Peace Of Mind
-            </span>
-            And A Stronger Legacy
-          </h1>
-
-          <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mb-10">
-            Legacy Partners helps families protect their income, secure their
-            future, and build generational stability through personalized life
-            insurance solutions.
-          </p>
-
-          <div className="space-y-5 mb-10">
-            <div className="flex items-center gap-4 text-lg">
-              <ShieldCheck className="text-yellow-400 w-7 h-7" />
-              Financial protection for your loved ones
-            </div>
-
-            <div className="flex items-center gap-4 text-lg">
-              <HeartHandshake className="text-yellow-400 w-7 h-7" />
-              Affordable plans tailored to your needs
-            </div>
-
-            <div className="flex items-center gap-4 text-lg">
-              <Users className="text-yellow-400 w-7 h-7" />
-              Legacy-focused family planning support
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-5">
-            <button className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
-              <CalendarDays className="w-5 h-5" />
-              Book Free Consultation
-            </button>
-
-            <button className="border border-yellow-500/40 hover:bg-yellow-500/10 px-8 py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3">
-              <Phone className="w-5 h-5 text-yellow-400" />
-              Speak To An Advisor
-            </button>
-          </div>
-        </div>
+  <a
+    href="https://calendly.com/legacy-partners-agency/30min"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-yellow-500/40 hover:bg-yellow-500/10 px-8 py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3"
+  >
+    <Phone className="w-5 h-5 text-yellow-400" />
+    Speak To An Advisor
+  </a>
+</div>
+      
 
         {/* Right Lead Form */}
         <div className="relative">
@@ -351,6 +324,72 @@ const handleSubmit = async (e) => {
               className="rounded-[2rem] shadow-2xl border border-yellow-500/20"
             />
           </div>
+
+           {/* Insurance Solutions Section */}
+<section className="py-24 bg-[#1a0407]">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="text-center mb-16">
+      <h2 className="text-5xl font-black text-yellow-400 mb-6">
+        Life Insurance Solutions
+      </h2>
+
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        Legacy Partners offers personalized life insurance strategies
+        designed to protect families, preserve wealth, and create
+        financial security for future generations.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+
+      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
+        <h3 className="font-bold text-xl mb-2">Term Life</h3>
+        <p className="text-gray-400">
+          Affordable protection for a specific period.
+        </p>
+      </div>
+
+      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
+        <h3 className="font-bold text-xl mb-2">Whole Life</h3>
+        <p className="text-gray-400">
+          Permanent coverage with long-term value.
+        </p>
+      </div>
+
+      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
+        <h3 className="font-bold text-xl mb-2">Mortgage Protection</h3>
+        <p className="text-gray-400">
+          Help protect your home and family.
+        </p>
+      </div>
+
+      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
+        <h3 className="font-bold text-xl mb-2">Final Expense</h3>
+        <p className="text-gray-400">
+          Coverage designed for end-of-life costs.
+        </p>
+      </div>
+
+      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
+        <h3 className="font-bold text-xl mb-2">IUL</h3>
+        <p className="text-gray-400">
+          Indexed Universal Life for protection and growth.
+        </p>
+      </div>
+       <h2 className="text-4xl font-bold mb-6">
+Serving Families Across Texas
+</h2>
+
+<p>
+Legacy Partners helps individuals and families throughout
+Terrell, Kaufman County, Dallas, Fort Worth, Rockwall,
+Forney, Mesquite, and communities across Texas secure
+life insurance coverage tailored to their needs.
+</p>
+    </div>
+  </div>
+</section>  
 
           <div>
             <h2 className="text-6xl font-black leading-tight mb-8 text-yellow-400">
