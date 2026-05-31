@@ -1,64 +1,71 @@
 import { useState } from "react";
-import { ShieldCheck, Users, HeartHandshake, Phone, CalendarDays } from "lucide-react";
+import {
+  ShieldCheck,
+  Users,
+  HeartHandshake,
+  Phone,
+  CalendarDays,
+} from "lucide-react";
+
 const calendlyLink = "https://calendly.com/legacy-partners-agency/30min";
 
-export default function LegacyPartnersLandingPage() {const [formData, setFormData] = useState({
-  fullName: "",
-  email: "",
-  phone: "",
-  coverageInterest: "",
-  ageRange: "",
-});
-
-const [status, setStatus] = useState("");
-
-const handleChange = (e) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value,
+export default function LegacyPartnersLandingPage() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    coverageInterest: "",
+    ageRange: "",
   });
-};
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus("Submitting...");
+  const [status, setStatus] = useState("");
 
-  try {
-    const response = await fetch("/api/leads", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...formData,
-        leadSource: "Legacy Partners Website",
-      }),
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    const result = await response.json();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Submitting...");
 
-    if (result.success) {
-      setStatus("success");
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        coverageInterest: "",
-        ageRange: "",
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          leadSource: "Legacy Partners Website",
+        }),
       });
-    } else {
-      setStatus("Something went wrong. Please try again.");
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          coverageInterest: "",
+          ageRange: "",
+        });
+      } else {
+        setStatus("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus("Unable to submit right now. Please try again.");
     }
-  } catch (error) {
-    setStatus("Unable to submit right now. Please try again.");
-  }
-};
+  };
+
   return (
     <div className="min-h-screen bg-[#120304] text-white overflow-hidden font-sans">
-      {/* Background Effects */}
       <div className="fixed inset-0 bg-gradient-to-br from-[#2b0007] via-[#120304] to-[#24060d] opacity-95 -z-10" />
 
-      {/* Navbar */}
       <header className="w-full border-b border-yellow-700/20 backdrop-blur-md bg-black/30 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -82,57 +89,86 @@ const handleSubmit = async (e) => {
             <a href="#" className="hover:text-yellow-400 transition-all">
               Home
             </a>
-            <a href="#" className="hover:text-yellow-400 transition-all">
-              About
-            </a>
-            <a href="#" className="hover:text-yellow-400 transition-all">
+            <a href="#solutions" className="hover:text-yellow-400 transition-all">
               Coverage
             </a>
-            <a href="#" className="hover:text-yellow-400 transition-all">
+            <a href="#why-us" className="hover:text-yellow-400 transition-all">
               Why Us
             </a>
-            <a href="#" className="hover:text-yellow-400 transition-all">
+            <a href={calendlyLink} target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-all">
               Contact
             </a>
           </nav>
 
-  <a
-  href="https://calendly.com/legacy-partners-agency/30min"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-semibold px-6 py-3 rounded-xl shadow-xl hover:scale-105 transition-all duration-300 inline-block"
->
-  Get Free Quote
-</a>
-
+          <a
+            href={calendlyLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-semibold px-6 py-3 rounded-xl shadow-xl hover:scale-105 transition-all duration-300 inline-block"
+          >
+            Get Free Quote
+          </a>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <div className="flex flex-col sm:flex-row gap-5">
-  <a
-    href="https://calendly.com/legacy-partners-agency/30min"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
-  >
-    <CalendarDays className="w-5 h-5" />
-    Book Free Consultation
-  </a>
+      <section className="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div className="inline-flex items-center gap-2 border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 rounded-full text-yellow-300 text-sm mb-8">
+            Protect What Matters Most
+          </div>
 
-  <a
-    href="https://calendly.com/legacy-partners-agency/30min"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="border border-yellow-500/40 hover:bg-yellow-500/10 px-8 py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3"
-  >
-    <Phone className="w-5 h-5 text-yellow-400" />
-    Speak To An Advisor
-  </a>
-</div>
-      
+          <h1 className="text-6xl lg:text-7xl font-black leading-tight mb-8 tracking-tight">
+            Life Insurance
+            <span className="block text-yellow-400">For Peace Of Mind</span>
+            And A Stronger Legacy
+          </h1>
 
-        {/* Right Lead Form */}
+          <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mb-10">
+            Legacy Partners helps families protect their income, secure their
+            future, and build generational stability through personalized life
+            insurance solutions.
+          </p>
+
+          <div className="space-y-5 mb-10">
+            <div className="flex items-center gap-4 text-lg">
+              <ShieldCheck className="text-yellow-400 w-7 h-7" />
+              Financial protection for your loved ones
+            </div>
+
+            <div className="flex items-center gap-4 text-lg">
+              <HeartHandshake className="text-yellow-400 w-7 h-7" />
+              Affordable plans tailored to your needs
+            </div>
+
+            <div className="flex items-center gap-4 text-lg">
+              <Users className="text-yellow-400 w-7 h-7" />
+              Legacy-focused family planning support
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-5">
+            <a
+              href={calendlyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              <CalendarDays className="w-5 h-5" />
+              Book Free Consultation
+            </a>
+
+            <a
+              href={calendlyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-yellow-500/40 hover:bg-yellow-500/10 px-8 py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              <Phone className="w-5 h-5 text-yellow-400" />
+              Speak To An Advisor
+            </a>
+          </div>
+        </div>
+
         <div className="relative">
           <div className="absolute inset-0 bg-yellow-500/10 blur-3xl rounded-full" />
 
@@ -154,99 +190,102 @@ const handleSubmit = async (e) => {
               protection needs, and family future.
             </p>
 
-           <form onSubmit={handleSubmit} className="space-y-5">
-  <input
-    type="text"
-    name="fullName"
-    value={formData.fullName}
-    onChange={handleChange}
-    placeholder="Full Name"
-    required
-    className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
-  />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                placeholder="Full Name"
+                required
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
+              />
 
-  <input
-    type="email"
-    name="email"
-    value={formData.email}
-    onChange={handleChange}
-    placeholder="Email Address"
-    required
-    className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
-  />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email Address"
+                required
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
+              />
 
-  <input
-    type="tel"
-    name="phone"
-    value={formData.phone}
-    onChange={handleChange}
-    placeholder="Phone Number"
-    required
-    className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
-  />
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Phone Number"
+                required
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
+              />
 
-  <select
-    name="coverageInterest"
-    value={formData.coverageInterest}
-    onChange={handleChange}
-    required
-    className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all text-gray-300"
-  >
-    <option value="">Coverage Interest</option>
-    <option value="Term Life">Term Life</option>
-    <option value="Whole Life">Whole Life</option>
-    <option value="Mortgage Protection">Mortgage Protection</option>
-    <option value="Burial Insurance">Burial Insurance</option>
-    <option value="Not Sure Yet">Not Sure Yet</option>
-  </select>
+              <select
+                name="coverageInterest"
+                value={formData.coverageInterest}
+                onChange={handleChange}
+                required
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all text-gray-300"
+              >
+                <option value="">Coverage Interest</option>
+                <option value="Term Life">Term Life</option>
+                <option value="Whole Life">Whole Life</option>
+                <option value="Mortgage Protection">Mortgage Protection</option>
+                <option value="Burial Insurance">Burial Insurance</option>
+                <option value="Not Sure Yet">Not Sure Yet</option>
+              </select>
 
-  <select
-    name="ageRange"
-    value={formData.ageRange}
-    onChange={handleChange}
-    required
-    className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all text-gray-300"
-  >
-    <option value="">Age Range</option>
-<option value="18-30">18–30</option>
-    <option value="31-45">31–45</option>
-    <option value="46-60">46–60</option>
-    <option value="60+">60+</option>
-  </select>
+              <select
+                name="ageRange"
+                value={formData.ageRange}
+                onChange={handleChange}
+                required
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all text-gray-300"
+              >
+                <option value="">Age Range</option>
+                <option value="18-30">18–30</option>
+                <option value="31-45">31–45</option>
+                <option value="46-60">46–60</option>
+                <option value="60+">60+</option>
+              </select>
 
-  <button
-    type="submit"
-    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold py-5 rounded-2xl hover:scale-[1.02] transition-all duration-300 shadow-2xl text-lg"
-  >
-    Start My Free Review
-  </button>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold py-5 rounded-2xl hover:scale-[1.02] transition-all duration-300 shadow-2xl text-lg"
+              >
+                Start My Free Review
+              </button>
 
-<p className="text-sm text-gray-400 mt-4 text-center">
-  🔒 Your information is kept confidential and used solely to provide requested consultations, quotes, and services. Legacy Partners does not sell, rent, or share your personal information with third parties for marketing purposes.
-</p>
+              <p className="text-sm text-gray-400 mt-4 text-center">
+                🔒 Your information is kept confidential and used solely to
+                provide requested consultations, quotes, and services. Legacy
+                Partners does not sell, rent, or share your personal information
+                with third parties for marketing purposes.
+              </p>
 
-  {status === "success" && (
-  <div className="bg-green-900/40 border border-green-500 rounded-2xl p-6 text-center space-y-4">
-    <h3 className="text-2xl font-bold text-green-300">
-      Thank You!
-    </h3>
+              {status === "success" && (
+                <div className="bg-green-900/40 border border-green-500 rounded-2xl p-6 text-center space-y-4">
+                  <h3 className="text-2xl font-bold text-green-300">
+                    Thank You!
+                  </h3>
 
-    <p className="text-gray-200">
-      Your information was received successfully.
-      Schedule your free consultation below.
-    </p>
+                  <p className="text-gray-200">
+                    Your information was received successfully. Schedule your
+                    free consultation below.
+                  </p>
 
-<a
-  href="https://calendly.com/legacy-partners-agency/30min"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all"
->
-  Schedule Consultation
-</a>
-  </div>
-)}
-</form>               
+                  <a
+                    href={calendlyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all"
+                  >
+                    Schedule Consultation
+                  </a>
+                </div>
+              )}
+            </form>
 
             <p className="text-xs text-center text-gray-500 mt-5 leading-relaxed">
               Your information is secure and only used to provide insurance
@@ -256,8 +295,7 @@ const handleSubmit = async (e) => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="bg-[#f5eadf] text-[#2b0007] py-24">
+      <section id="why-us" className="bg-[#f5eadf] text-[#2b0007] py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-black mb-6">
@@ -306,7 +344,66 @@ const handleSubmit = async (e) => {
         </div>
       </section>
 
-      {/* Legacy Section */}
+      <section id="solutions" className="py-24 bg-[#1a0407]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-black text-yellow-400 mb-6">
+              Life Insurance Solutions
+            </h2>
+
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Legacy Partners offers personalized life insurance strategies
+              designed to protect families, preserve wealth, and create
+              financial security for future generations.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {[
+              [
+                "Term Life Insurance",
+                "Affordable protection for a specific period.",
+              ],
+              [
+                "Whole Life Insurance",
+                "Permanent coverage with long-term value.",
+              ],
+              [
+                "Mortgage Protection Insurance",
+                "Help protect your home and family.",
+              ],
+              [
+                "Final Expense Insurance",
+                "Coverage designed for end-of-life costs.",
+              ],
+              [
+                "Indexed Universal Life Insurance",
+                "Protection with potential cash value growth.",
+              ],
+            ].map(([title, text]) => (
+              <div
+                key={title}
+                className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20 text-center"
+              >
+                <h3 className="font-bold text-xl mb-3 text-white">{title}</h3>
+                <p className="text-gray-400">{text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-14">
+            <a
+              href={calendlyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              Compare My Coverage Options
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
@@ -325,78 +422,10 @@ const handleSubmit = async (e) => {
             />
           </div>
 
-           {/* Insurance Solutions Section */}
-<section className="py-24 bg-[#1a0407]">
-  <div className="max-w-7xl mx-auto px-6">
-
-    <div className="text-center mb-16">
-      <h2 className="text-5xl font-black text-yellow-400 mb-6">
-        Life Insurance Solutions
-      </h2>
-
-      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-        Legacy Partners offers personalized life insurance strategies
-        designed to protect families, preserve wealth, and create
-        financial security for future generations.
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-
-      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
-        <h3 className="font-bold text-xl mb-2">Term Life</h3>
-        <p className="text-gray-400">
-          Affordable protection for a specific period.
-        </p>
-      </div>
-
-      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
-        <h3 className="font-bold text-xl mb-2">Whole Life</h3>
-        <p className="text-gray-400">
-          Permanent coverage with long-term value.
-        </p>
-      </div>
-
-      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
-        <h3 className="font-bold text-xl mb-2">Mortgage Protection</h3>
-        <p className="text-gray-400">
-          Help protect your home and family.
-        </p>
-      </div>
-
-      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
-        <h3 className="font-bold text-xl mb-2">Final Expense</h3>
-        <p className="text-gray-400">
-          Coverage designed for end-of-life costs.
-        </p>
-      </div>
-
-      <div className="bg-black/30 p-6 rounded-2xl border border-yellow-500/20">
-        <h3 className="font-bold text-xl mb-2">IUL</h3>
-        <p className="text-gray-400">
-          Indexed Universal Life for protection and growth.
-        </p>
-      </div>
-       <h2 className="text-4xl font-bold mb-6">
-Serving Families Across Texas
-</h2>
-
-<p>
-Legacy Partners helps individuals and families throughout
-Terrell, Kaufman County, Dallas, Fort Worth, Rockwall,
-Forney, Mesquite, and communities across Texas secure
-life insurance coverage tailored to their needs.
-</p>
-    </div>
-  </div>
-</section>  
-
           <div>
             <h2 className="text-6xl font-black leading-tight mb-8 text-yellow-400">
               Building Legacies.
-              <span className="block text-white">
-                Securing Tomorrows.
-              </span>
+              <span className="block text-white">Securing Tomorrows.</span>
             </h2>
 
             <p className="text-xl text-gray-300 leading-relaxed mb-10">
@@ -405,14 +434,18 @@ life insurance coverage tailored to their needs.
               of mind for generations to come.
             </p>
 
-            <button className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300">
+            <a
+              href={calendlyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300"
+            >
               Learn More About Legacy Partners
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-yellow-700/20 py-12 text-center text-gray-500 text-sm bg-black/40 backdrop-blur-md">
         <div className="flex justify-center mb-4">
           <img
