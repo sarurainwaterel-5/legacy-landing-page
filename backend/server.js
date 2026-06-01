@@ -53,14 +53,23 @@ app.post("/api/leads", async (req, res) => {
 
   existingLeads.push(lead);
 
+  
   try {
-    fs.writeFileSync(leadsFilePath, JSON.stringify(existingLeads, null, 2));
+  fs.writeFileSync(leadsFilePath, JSON.stringify(existingLeads, null, 2));
 
-    console.log("Lead saved successfully:");
-    console.log(lead);
+  console.log("Lead saved successfully:");
+  console.log(lead);
 
-    try {
-      const info = await transporter.sendMail({
+  // Send success to website immediately
+  res.status(201).json({
+    success: true,
+    message: "Lead saved successfully",
+    lead,
+  });
+
+  // Email happens after response
+  try {
+    const info = await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.NOTIFY_EMAIL,
         subject: "New Legacy Partners Life Insurance Lead",
@@ -84,11 +93,7 @@ Submitted: ${lead.createdAt}
       console.error(emailError.message);
     }
 
-    res.status(201).json({
-      success: true,
-      message: "Lead saved successfully",
-      lead,
-    });
+    
   } catch (error) {
     console.error("Error saving lead:", error);
 
