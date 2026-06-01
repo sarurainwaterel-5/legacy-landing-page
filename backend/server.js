@@ -97,14 +97,12 @@ Submitted: ${lead.createdAt}
       message: "Lead saved successfully",
       lead,
     });
-  } catch (error) {
-    console.error("Error saving lead:", error);
+  
+} catch (emailError) {
+  console.error("EMAIL FAILED:");
+  console.error(emailError.message);
+}
 
-    res.status(500).json({
-      success: false,
-      message: "Failed to save lead",
-    });
-  }
 });
 
 app.listen(PORT, () => {
