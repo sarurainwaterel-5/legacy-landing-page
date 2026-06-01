@@ -26,13 +26,14 @@ export default function LegacyPartnersLandingPage() {
       [e.target.name]: e.target.value,
     });
   };
-
+ 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Submitting...");
+  e.preventDefault();
+  console.log("FORM SUBMITTED");
+  setStatus("Submitting...");
 
     try {
-      const response = await fetch(https://legacy-landing-page-1.onrender.com/api/leads"", {
+      const response = await fetch("https://legacy-landing-page-1.onrender.com/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +44,8 @@ export default function LegacyPartnersLandingPage() {
         }),
       });
 
-      const result = await response.json();
+     const result = await response.json();
+     console.log("Lead API result:", result); 
 
       if (result.success) {
         setStatus("success");
