@@ -8,6 +8,7 @@ import nodemailer from "nodemailer";
 
 dotenv.config();
 
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -26,6 +27,15 @@ const transporter = nodemailer.createTransport({
   connectionTimeout: 30000,
   greetingTimeout: 30000,
   socketTimeout: 30000,
+});
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("SMTP VERIFY FAILED:");
+    console.error(error.message);
+  } else {
+    console.log("SMTP SERVER READY");
+  }
 });
 
 app.use(cors());
