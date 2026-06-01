@@ -74,10 +74,16 @@ Submitted: ${lead.createdAt}
 
       console.log("EMAIL SENT SUCCESSFULLY");
       console.log(info.response);
-    } catch (emailError) {
-      console.error("EMAIL FAILED:");
-      console.error(emailError);
-    }
+      } catch (emailError) {
+  console.error("EMAIL FAILED:");
+  console.error(emailError.message);
+
+  return res.status(500).json({
+    success: false,
+    message: "Lead saved, but email failed",
+    error: emailError.message,
+  });
+}
 
     res.status(201).json({
       success: true,
