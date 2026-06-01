@@ -44,6 +44,7 @@ app.post("/api/leads", async (req, res) => {
 
   let existingLeads = [];
 
+  /*
   try {
     const data = fs.readFileSync(leadsFilePath, "utf8");
     existingLeads = JSON.parse(data);
@@ -89,6 +90,7 @@ Submitted: ${lead.createdAt}
     error: emailError.message,
   });
 }
+*/
 
     res.status(201).json({
       success: true,
