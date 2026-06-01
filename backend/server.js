@@ -29,14 +29,6 @@ const transporter = nodemailer.createTransport({
   socketTimeout: 30000,
 });
 
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("SMTP VERIFY FAILED:");
-    console.error(error.message);
-  } else {
-    console.log("SMTP SERVER READY");
-  }
-});
 
 app.use(cors());
 app.use(express.json());
