@@ -44,7 +44,6 @@ app.post("/api/leads", async (req, res) => {
 
   let existingLeads = [];
 
-  /*
   try {
     const data = fs.readFileSync(leadsFilePath, "utf8");
     existingLeads = JSON.parse(data);
@@ -80,29 +79,24 @@ Submitted: ${lead.createdAt}
 
       console.log("EMAIL SENT SUCCESSFULLY");
       console.log(info.response);
-      } catch (emailError) {
-  console.error("EMAIL FAILED:");
-  console.error(emailError.message);
-
-  return res.status(500).json({
-    success: false,
-    message: "Lead saved, but email failed",
-    error: emailError.message,
-  });
-}
-*/
+    } catch (emailError) {
+      console.error("EMAIL FAILED:");
+      console.error(emailError.message);
+    }
 
     res.status(201).json({
       success: true,
       message: "Lead saved successfully",
       lead,
     });
-  
-} catch (emailError) {
-  console.error("EMAIL FAILED:");
-  console.error(emailError.message);
-}
+  } catch (error) {
+    console.error("Error saving lead:", error);
 
+    res.status(500).json({
+      success: false,
+      message: "Failed to save lead",
+    });
+  }
 });
 
 app.listen(PORT, () => {
