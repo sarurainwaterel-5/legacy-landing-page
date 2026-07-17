@@ -118,20 +118,17 @@ export default function LegacyPartnersLandingPage() {
 
       <section className="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <div className="inline-flex items-center gap-2 border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 rounded-full text-yellow-300 text-sm mb-8">
-            Protect What Matters Most
+          <div className="inline-flex items-center gap-2 border border-yellow-500/30 bg-yellow-500/10 px-3 py-2 rounded-full text-yellow-300 text-xs sm:text-sm mb-6 sm:mb-8">
+            ⭐ 4.9/5 Stars • 2,000+ Families Protected
           </div>
 
-          <h1 className="text-6xl lg:text-7xl font-black leading-tight mb-8 tracking-tight">
-            Life Insurance
-            <span className="block text-yellow-400">For Peace Of Mind</span>
-            And A Stronger Legacy
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6 sm:mb-8 tracking-tight">
+            Life Insurance That Secures Your Family's Future
+            <span className="block text-yellow-400">In 30 Minutes or Less</span>
           </h1>
 
-          <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mb-10">
-            Legacy Partners helps families protect their income, secure their
-            future, and build generational stability through personalized life
-            insurance solutions.
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl mb-8 sm:mb-10">
+            Get affordable coverage tailored to your family. No medical exam required for most policies. Free consultation today.
           </p>
 
           <div className="space-y-5 mb-10">
@@ -151,12 +148,12 @@ export default function LegacyPartnersLandingPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-5">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
             <a
               href={calendlyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-8 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+              className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-6 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base min-h-[48px] sm:min-h-auto"
             >
               <CalendarDays className="w-5 h-5" />
               Book Free Consultation
@@ -166,10 +163,10 @@ export default function LegacyPartnersLandingPage() {
               href={calendlyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-yellow-500/40 hover:bg-yellow-500/10 px-8 py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3"
+              className="border border-yellow-500/40 hover:bg-yellow-500/10 px-6 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base min-h-[48px] sm:min-h-auto"
             >
               <Phone className="w-5 h-5 text-yellow-400" />
-              Speak To An Advisor
+              Call Now
             </a>
           </div>
         </div>
@@ -189,13 +186,12 @@ export default function LegacyPartnersLandingPage() {
               />
             </div>
 
-            <h2 className="text-4xl font-bold text-center mb-3">
-              Get Your Free Quote
+            <h2 className="text-2xl sm:text-4xl font-bold text-center mb-2 sm:mb-3">
+              Get Your Free Quote in 5 Minutes
             </h2>
 
-            <p className="text-gray-300 text-center mb-8 leading-relaxed">
-              Explore life insurance options designed around your goals,
-              protection needs, and family future.
+            <p className="text-sm sm:text-base text-gray-300 text-center mb-6 sm:mb-8 leading-relaxed">
+              See personalized coverage options instantly. No obligation.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -206,7 +202,7 @@ export default function LegacyPartnersLandingPage() {
                 onChange={handleChange}
                 placeholder="Full Name"
                 required
-                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl outline-none transition-all text-base min-h-[44px]"
               />
 
               <input
@@ -216,7 +212,7 @@ export default function LegacyPartnersLandingPage() {
                 onChange={handleChange}
                 placeholder="Email Address"
                 required
-                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl outline-none transition-all text-base min-h-[44px]"
               />
 
               <input
@@ -226,7 +222,7 @@ export default function LegacyPartnersLandingPage() {
                 onChange={handleChange}
                 placeholder="Phone Number"
                 required
-                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all"
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl outline-none transition-all text-base min-h-[44px]"
               />
 
               <select
@@ -234,7 +230,7 @@ export default function LegacyPartnersLandingPage() {
                 value={formData.coverageInterest}
                 onChange={handleChange}
                 required
-                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all text-gray-300"
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl outline-none transition-all text-gray-300 text-base min-h-[44px]"
               >
                 <option value="">Coverage Interest</option>
                 <option value="Term Life">Term Life</option>
@@ -249,7 +245,7 @@ export default function LegacyPartnersLandingPage() {
                 value={formData.ageRange}
                 onChange={handleChange}
                 required
-                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-5 py-4 rounded-xl outline-none transition-all text-gray-300"
+                className="w-full bg-black/40 border border-zinc-700 focus:border-yellow-500 px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl outline-none transition-all text-gray-300 text-base min-h-[44px]"
               >
                 <option value="">Age Range</option>
                 <option value="18-30">18–30</option>
@@ -260,9 +256,9 @@ export default function LegacyPartnersLandingPage() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold py-5 rounded-2xl hover:scale-[1.02] transition-all duration-300 shadow-2xl text-lg"
+                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold py-3 sm:py-5 rounded-lg sm:rounded-2xl hover:scale-[1.02] transition-all duration-300 shadow-2xl text-base sm:text-lg min-h-[48px]"
               >
-                Start My Free Review
+                Get My Free Quote
               </button>
 
               <p className="text-sm text-gray-400 mt-4 text-center">
@@ -305,14 +301,13 @@ export default function LegacyPartnersLandingPage() {
 
       <section id="why-us" className="bg-[#f5eadf] text-[#2b0007] py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-black mb-6">
-              Why Choose Legacy Partners?
+          <div className="text-center mb-12 sm:mb-20">
+            <h2 className="text-3xl sm:text-5xl font-black mb-4 sm:mb-6">
+              Why 2,000+ Families Choose Us
             </h2>
 
-            <p className="max-w-3xl mx-auto text-lg text-[#5b3138]">
-              We focus on helping families build protection strategies rooted in
-              financial stability, legacy planning, and long-term peace of mind.
+            <p className="max-w-3xl mx-auto text-base sm:text-lg text-[#5b3138]">
+              Expert guidance, affordable options, and peace of mind in minutes.
             </p>
           </div>
 
@@ -404,9 +399,9 @@ export default function LegacyPartnersLandingPage() {
               href={calendlyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300"
+              className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-6 sm:px-10 py-3 sm:py-5 rounded-lg sm:rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
             >
-              Compare My Coverage Options
+              Compare Coverage Now
             </a>
           </div>
         </div>
