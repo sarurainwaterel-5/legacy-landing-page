@@ -5,9 +5,19 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E47ET6JEZG"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){window.dataLayer.push(arguments);}
+      function gtag(){window.dataLayer.push(arguments);} 
       gtag('js', new Date());
-      gtag('config', 'G-E47ET6JEZG');
+      // Make initial pageview non-automatic so we can control when analytics fires
+      gtag('config', 'G-E47ET6JEZG', { 'send_page_view': false });
+      // Send page_view after site becomes interactive to avoid blocking
+      function sendInitialPageView(){
+        try{ gtag('event', 'page_view'); }catch(e){}
+      }
+      if (document.readyState === 'complete') {
+        sendInitialPageView();
+      } else {
+        window.addEventListener('load', function(){ setTimeout(sendInitialPageView, 1000); });
+      }
     </script>
 
     <meta charset="UTF-8" />
@@ -29,6 +39,25 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="//code.tidio.co/vrin3zzfyn07kf1gzzxru0eep2z2rx4m.js" async></script>
+
+    <!-- Defer loading of Tidio chat until after load or user interaction -->
+    <script>
+      (function(){
+        var tidioLoaded = false;
+        function loadTidio(){
+          if(tidioLoaded) return; tidioLoaded = true;
+          var s = document.createElement('script');
+          s.src = '//code.tidio.co/vrin3zzfyn07kf1gzzxru0eep2z2rx4m.js';
+          s.async = true;
+          document.body.appendChild(s);
+        }
+        // Load after window load + small delay
+        window.addEventListener('load', function(){ setTimeout(loadTidio, 2000); });
+        // Or load on first user interaction
+        ['click','keydown','touchstart','mousemove'].forEach(function(evt){
+          window.addEventListener(evt, loadTidio, { once: true, passive: true });
+        });
+      })();
+    </script>
   </body>
 </html>

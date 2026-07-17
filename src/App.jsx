@@ -74,6 +74,9 @@ export default function LegacyPartnersLandingPage() {
             <img
               src="/logo.png"
               alt="Legacy Partners"
+              width="80"
+              height="80"
+              loading="eager"
               className="w-20 h-20 object-contain"
             />
 
@@ -179,6 +182,9 @@ export default function LegacyPartnersLandingPage() {
               <img
                 src="/logo.png"
                 alt="Legacy Partners"
+                width="112"
+                height="112"
+                loading="lazy"
                 className="w-28 h-28 object-contain"
               />
             </div>
@@ -411,6 +417,9 @@ export default function LegacyPartnersLandingPage() {
           <img
             src="/logo.png"
             alt="watermark"
+            width="500"
+            height="500"
+            loading="lazy"
             className="absolute right-10 top-10 w-[500px] opacity-20"
           />
         </div>
@@ -420,6 +429,9 @@ export default function LegacyPartnersLandingPage() {
             <img
               src="/family.jpg"
               alt="Family"
+              width="1200"
+              height="800"
+              loading="lazy"
               className="rounded-[2rem] shadow-2xl border border-yellow-500/20"
             />
           </div>
