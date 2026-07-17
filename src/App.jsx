@@ -20,6 +20,17 @@ export default function LegacyPartnersLandingPage() {
 
   const [status, setStatus] = useState("");
 
+  // Track CTA clicks for conversion funnel
+  const trackCTAClick = (label) => {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'view_item', {
+        event_category: 'engagement',
+        event_label: label || 'cta_click',
+        value: 1,
+      });
+    }
+  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -31,6 +42,15 @@ export default function LegacyPartnersLandingPage() {
   e.preventDefault();
   console.log("FORM SUBMITTED");
   setStatus("Submitting...");
+
+  // Track form submission to Google Analytics
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'generate_lead', {
+      event_category: 'engagement',
+      event_label: formData.coverageInterest || 'Unknown',
+      value: 1,
+    });
+  }
 
     try {
       const response = await fetch("https://legacy-landing-page-1.onrender.com/api/leads", {
@@ -49,6 +69,14 @@ export default function LegacyPartnersLandingPage() {
 
       if (result.success) {
         setStatus("success");
+        // Track successful conversion
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'conversion', {
+            event_category: 'engagement',
+            event_label: 'form_submission_success',
+            value: 1,
+          });
+        }
         setFormData({
           fullName: "",
           email: "",
@@ -58,9 +86,19 @@ export default function LegacyPartnersLandingPage() {
         });
       } else {
         setStatus("Something went wrong. Please try again.");
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'exception', {
+            description: 'Form submission failed: ' + (result.error || 'Unknown error'),
+          });
+        }
       }
     } catch (error) {
       setStatus("Unable to submit right now. Please try again.");
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'exception', {
+          description: 'Form submission error: ' + error.message,
+        });
+      }
     }
   };
 
@@ -109,6 +147,7 @@ export default function LegacyPartnersLandingPage() {
             href={calendlyLink}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackCTAClick('header_cta_quote')}
             className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-semibold px-6 py-3 rounded-xl shadow-xl hover:scale-105 transition-all duration-300 inline-block"
           >
             Get Free Quote
@@ -153,6 +192,7 @@ export default function LegacyPartnersLandingPage() {
               href={calendlyLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackCTAClick('hero_cta_book_consultation')}
               className="bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-6 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base min-h-[48px] sm:min-h-auto"
             >
               <CalendarDays className="w-5 h-5" />
@@ -163,6 +203,7 @@ export default function LegacyPartnersLandingPage() {
               href={calendlyLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackCTAClick('hero_cta_call_now')}
               className="border border-yellow-500/40 hover:bg-yellow-500/10 px-6 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base min-h-[48px] sm:min-h-auto"
             >
               <Phone className="w-5 h-5 text-yellow-400" />
@@ -399,6 +440,7 @@ export default function LegacyPartnersLandingPage() {
               href={calendlyLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackCTAClick('solutions_cta_compare_coverage')}
               className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-300 text-black font-bold px-6 sm:px-10 py-3 sm:py-5 rounded-lg sm:rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px] flex items-center justify-center"
             >
               Compare Coverage Now
