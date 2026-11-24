@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wine-950: #120304;
+  --color-wine-900: #1a0407;
+  --color-wine-800: #2b0007;
+  --color-wine-700: #3a0810;
+  --color-cream: #f5eadf;
+  --color-ink: #2b0007;
+  --color-ink-soft: #5b3138;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-wine-950); color: white; }
+
+@layer components {
+.btn-gold {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-300 px-6 py-3 font-bold text-black shadow-xl transition hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300 disabled:opacity-60 min-h-12;
+}
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-yellow-500/40 px-6 py-3 font-semibold transition hover:bg-yellow-500/10 min-h-12;
+}
+.field {
+  @apply w-full rounded-xl border border-zinc-700 bg-black/40 px-4 py-3 text-base text-white outline-none transition placeholder:text-zinc-500 focus:border-yellow-500 min-h-12;
+}
+.label { @apply mb-1 block text-sm font-medium text-zinc-300; }
+.card { @apply rounded-2xl border border-yellow-500/20 bg-black/30 p-6; }
+
+/* Light surfaces for the portal and admin */
+.panel { @apply rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-900 shadow-sm; }
+.pfield { @apply w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 outline-none focus:border-yellow-600 focus:ring-2 focus:ring-yellow-500/30; }
+.pbtn { @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#2b0007] px-4 py-2 font-semibold text-white transition hover:bg-[#3a0810] disabled:opacity-50; }
+.pbtn-light { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-300 bg-white px-4 py-2 font-medium text-zinc-800 transition hover:bg-zinc-50; }
+}
