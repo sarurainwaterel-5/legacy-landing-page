@@ -36,7 +36,7 @@ export default function Home() {
     telephone: "+1-214-403-1712",
     areaServed: { "@type": "State", name: "Texas" },
     employee: { "@type": "Person", name: SITE.agent, jobTitle: SITE.agentTitle },
-    ...(SITE.address ? { address: SITE.address } : {}),
+    address: { "@type": "PostalAddress", ...SITE.postalAddress },
   };
   return (
     <>

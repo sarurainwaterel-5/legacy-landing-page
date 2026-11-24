@@ -12,12 +12,13 @@ test("credit repair contract contains the required CROA elements", () => {
   assert.match(body, /Jane Doe/);
 });
 
-test("contracts cannot be signed while business details are missing", () => {
+test("contracts cannot be signed while required details are missing", () => {
   const { body } = buildAgreement("credit_repair", { clientName: "Jane Doe", fee: "" });
   const missing = missingFields(body);
   assert.ok(missing.includes("TOTAL FEE AND PAYMENT TERMS REQUIRED"));
-  assert.ok(missing.some((m) => /ADDRESS/.test(m)));
-  assert.ok(missing.some((m) => /CSO/.test(m)));
+  assert.ok(missing.some((m) => /CSO/.test(m)), "Texas CSO registration still required");
+  assert.ok(!missing.some((m) => /ADDRESS/.test(m)));
+  assert.match(body, /302 Talty Rd, Terrell, TX 75160/);
 });
 
 test("cancel date is written into the signed copy and the hash changes", () => {
@@ -32,7 +33,8 @@ test("cancel date is written into the signed copy and the hash changes", () => {
 test("tax engagement letter includes the § 7216 limit on use of tax information", () => {
   const { body } = buildAgreement("tax_prep", { clientName: "Jane Doe", fee: "$150" });
   assert.match(body, /7216/);
-  assert.deepEqual(missingFields(body).filter((m) => !/ADDRESS/.test(m)), []);
+  assert.deepEqual(missingFields(body), []);
+  assert.match(body, /302 Talty Rd, Terrell, TX 75160/);
 });
 
 test("rights disclosure is the separate federal statement", () => {
