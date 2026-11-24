@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { CREDIT_REPAIR_OPEN } from "@/lib/site";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { BUREAUS, formatDate } from "@/lib/format";
@@ -8,6 +10,7 @@ export const metadata = { title: "Credit repair progress" };
 
 export default async function Credit() {
   const session = await requireUser("/portal/credit");
+  if (!CREDIT_REPAIR_OPEN) notFound();
   const cases = await prisma.case.findMany({
     where: { userId: session.user.id, service: "credit_repair" },
     orderBy: { createdAt: "desc" },

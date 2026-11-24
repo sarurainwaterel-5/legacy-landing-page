@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { CREDIT_REPAIR_OPEN, SERVICE_LIST, SITE } from "@/lib/site";
 
 export const metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy" } };
 const UPDATED = "November 24, 2026";
@@ -10,7 +10,7 @@ export default function Privacy() {
     <article className="mx-auto max-w-3xl px-6 py-16 leading-relaxed text-zinc-300 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_li]:ml-5 [&_li]:list-disc [&_p]:mb-4">
       <h1 className="mb-2 text-4xl font-black text-white">Privacy Policy</h1>
       <p className="text-sm text-zinc-500">Last updated {UPDATED}</p>
-      <p>This policy explains how {SITE.name} ("we") collects, uses and protects your information when you use legacypartners.agency, our client portal, and our life insurance, credit repair and tax preparation services.</p>
+      <p>This policy explains how {SITE.name} ("we") collects, uses and protects your information when you use legacypartners.agency, our client portal, and our {SERVICE_LIST} services.</p>
 
       <h2>Information we collect</h2>
       <ul>
@@ -22,7 +22,7 @@ export default function Privacy() {
       <h2>How we use it</h2>
       <ul>
         <li>To contact you about the services you asked about, including by phone, text and email with your consent.</li>
-        <li>To provide insurance quotes, credit repair and tax preparation services you sign up for.</li>
+        <li>To provide the insurance{CREDIT_REPAIR_OPEN ? ", credit repair" : ""} and tax preparation services you sign up for.</li>
         <li>To keep the portal secure and meet our legal and record-keeping obligations.</li>
       </ul>
       <p><strong>Tax information:</strong> information from your tax return is used only to prepare and file your return. We will not use or share it for any other purpose — including offering you insurance or credit services — without your separate written consent, as required by Internal Revenue Code § 7216.</p>

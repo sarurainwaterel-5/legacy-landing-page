@@ -30,7 +30,7 @@ export default async function LoginPage({ searchParams }) {
           <span className="text-sm tracking-[0.3em] text-yellow-400">LEGACY PARTNERS</span>
         </Link>
         <h1 className="mb-1 text-center text-2xl font-bold">Client portal</h1>
-        <p className="mb-6 text-center text-sm text-zinc-400">Documents, agreements, credit repair progress and messages — all in one secure place.</p>
+        <p className="mb-6 text-center text-sm text-zinc-400">Documents, agreements, progress updates and messages — all in one secure place.</p>
         <LoginForm callbackUrl={callbackUrl} google={googleEnabled} initialError={error} />
       </div>
     </main>

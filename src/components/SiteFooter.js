@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { CREDIT_REPAIR_OPEN, SITE } from "@/lib/site";
 
 export default function SiteFooter() {
   return (
@@ -14,7 +14,7 @@ export default function SiteFooter() {
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-2">
           <Link href="/life-insurance" className="hover:text-white">Life Insurance</Link>
-          <Link href="/credit-repair" className="hover:text-white">Credit Repair</Link>
+          {CREDIT_REPAIR_OPEN && <Link href="/credit-repair" className="hover:text-white">Credit Repair</Link>}
           <Link href="/tax-preparation" className="hover:text-white">Tax Preparation</Link>
           <Link href="/about" className="hover:text-white">About</Link>
           <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
@@ -23,7 +23,7 @@ export default function SiteFooter() {
         </nav>
         <div className="space-y-2 text-xs leading-relaxed">
           <p>Insurance products are subject to underwriting and policy approval. Coverage options vary by carrier and state.</p>
-          <p>Credit repair: we cannot remove accurate, current and verifiable information, and no particular result is guaranteed. You may dispute credit report errors yourself with the credit bureaus at no cost.</p>
+          {CREDIT_REPAIR_OPEN && <p>Credit repair: we cannot remove accurate, current and verifiable information, and no particular result is guaranteed. You may dispute credit report errors yourself with the credit bureaus at no cost.</p>}
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
         </div>
       </div>

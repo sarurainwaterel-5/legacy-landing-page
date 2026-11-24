@@ -28,7 +28,12 @@ test("phone normalization accepts +1 and rejects invalid area codes", () => {
   assert.equal(normalizePhone("214-403-171"), null);
 });
 
-test("credit repair and tax prep are valid interests; age range optional", () => {
-  assert.ok(validateLead({ ...good, interest: "Credit Repair", ageRange: "" }).lead);
+test("tax prep is a valid interest; age range optional", () => {
+  assert.ok(validateLead({ ...good, interest: "Tax Preparation", ageRange: "" }).lead);
   assert.ok(validateLead({ ...good, interest: "Tax Preparation", ageRange: undefined }).lead);
+});
+
+test("credit repair leads are refused while credit repair is closed", () => {
+  assert.equal(process.env.NEXT_PUBLIC_CREDIT_REPAIR_OPEN, undefined);
+  assert.ok(validateLead({ ...good, interest: "Credit Repair" }).errors.interest);
 });

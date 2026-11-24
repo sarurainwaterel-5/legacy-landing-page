@@ -1,7 +1,7 @@
-import { AGE_RANGES, INTERESTS, SITE } from "./site.js";
+import { AGE_RANGES, CREDIT_REPAIR_OPEN, INTERESTS, SITE } from "./site.js";
 
 // Shown under the form and stored with every lead. Have compliance approve the wording.
-export const LEAD_CONSENT = `By submitting, you agree that ${SITE.name} may contact you at the number and email you provided, including by call, text message (message and data rates may apply) and email, about insurance, credit repair and tax services. Consent is not a condition of purchase. Reply STOP to opt out of texts.`;
+export const LEAD_CONSENT = `By submitting, you agree that ${SITE.name} may contact you at the number and email you provided, including by call, text message (message and data rates may apply) and email, about ${CREDIT_REPAIR_OPEN ? "insurance, credit repair and tax" : "insurance and tax"} services. Consent is not a condition of purchase. Reply STOP to opt out of texts.`;
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 

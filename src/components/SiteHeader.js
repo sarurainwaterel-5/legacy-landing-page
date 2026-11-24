@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { CREDIT_REPAIR_OPEN, SITE } from "@/lib/site";
 
 export default function SiteHeader() {
   return (
@@ -16,7 +16,7 @@ export default function SiteHeader() {
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-7 text-sm font-medium text-zinc-200 lg:flex">
           <Link href="/life-insurance" className="hover:text-yellow-400">Life Insurance</Link>
-          <Link href="/credit-repair" className="hover:text-yellow-400">Credit Repair</Link>
+          {CREDIT_REPAIR_OPEN && <Link href="/credit-repair" className="hover:text-yellow-400">Credit Repair</Link>}
           <Link href="/tax-preparation" className="hover:text-yellow-400">Tax Preparation</Link>
           <Link href="/about" className="hover:text-yellow-400">About</Link>
           <Link href="/login" className="hover:text-yellow-400">Client Login</Link>
@@ -31,7 +31,7 @@ export default function SiteHeader() {
       </div>
       <nav aria-label="Services" className="flex justify-center gap-5 overflow-x-auto border-t border-yellow-700/10 px-4 py-2 text-xs text-zinc-300 lg:hidden">
         <Link href="/life-insurance">Life Insurance</Link>
-        <Link href="/credit-repair">Credit Repair</Link>
+        {CREDIT_REPAIR_OPEN && <Link href="/credit-repair">Credit Repair</Link>}
         <Link href="/tax-preparation">Tax Prep</Link>
         <Link href="/login">Client Login</Link>
       </nav>

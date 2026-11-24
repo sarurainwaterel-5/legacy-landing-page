@@ -18,11 +18,21 @@ export const SITE = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
 };
 
-export const SERVICES = {
+// Credit repair stays closed until the Texas CSO registration and surety bond are in place (Tex. Fin. Code ch. 393).
+// To open it: set NEXT_PUBLIC_CREDIT_REPAIR_OPEN=true and NEXT_PUBLIC_CSO_REGISTRATION on Vercel, then redeploy.
+export const CREDIT_REPAIR_OPEN = process.env.NEXT_PUBLIC_CREDIT_REPAIR_OPEN === "true";
+
+const ALL_SERVICES = {
   life_insurance: "Life Insurance",
   credit_repair: "Credit Repair",
   tax_prep: "Tax Preparation",
 };
+
+// Services we currently offer (what clients and staff can open).
+export const SERVICES = Object.fromEntries(Object.entries(ALL_SERVICES).filter(([k]) => CREDIT_REPAIR_OPEN || k !== "credit_repair"));
+
+// Plain-language list for page copy, e.g. "life insurance, credit repair and tax preparation".
+export const SERVICE_LIST = CREDIT_REPAIR_OPEN ? "life insurance, credit repair and tax preparation" : "life insurance and tax preparation";
 
 export const INTERESTS = [
   "Term Life",
@@ -33,6 +43,6 @@ export const INTERESTS = [
   "Credit Repair",
   "Tax Preparation",
   "Not Sure Yet",
-];
+].filter((i) => CREDIT_REPAIR_OPEN || i !== "Credit Repair");
 
 export const AGE_RANGES = ["18-30", "31-45", "46-60", "60+"];

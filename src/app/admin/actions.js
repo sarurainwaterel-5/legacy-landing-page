@@ -9,6 +9,7 @@ import { audit } from "@/lib/audit";
 import { notifyClient } from "@/lib/notify";
 import { normalizePhone } from "@/lib/leads";
 import { SERVICES } from "@/lib/site";
+import { AGREEMENT_OPTIONS } from "@/lib/agreement-options";
 import { AGREEMENTS, buildAgreement, missingFields } from "@/lib/agreements";
 import { BUREAUS } from "@/lib/format";
 
@@ -117,7 +118,7 @@ export async function sendAgreement(prev, formData) {
   const caseId = str(formData, "caseId") || null;
   const fee = str(formData, "fee", 1000);
   const client = await prisma.user.findUnique({ where: { id: str(formData, "clientId") } });
-  if (!client || !AGREEMENTS[kind]) return { error: "Choose an agreement." };
+  if (!client || !AGREEMENTS[kind] || !AGREEMENT_OPTIONS.some(([k]) => k === kind)) return { error: "Choose an agreement." };
   if (!client.name) return { error: "Add the client's full legal name first (they can also add it in their portal)." };
   if (caseId && !(await prisma.case.findFirst({ where: { id: caseId, userId: client.id } }))) return { error: "Unknown case." };
   const built = buildAgreement(kind, { clientName: client.name, fee });

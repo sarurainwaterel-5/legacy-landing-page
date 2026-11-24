@@ -2,15 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays, CreditCard, FileText, HeartHandshake, Phone, ShieldCheck, Users } from "lucide-react";
 import LeadForm from "@/components/LeadForm";
-import { SITE } from "@/lib/site";
+import { CREDIT_REPAIR_OPEN, SERVICE_LIST, SITE } from "@/lib/site";
 
 export const metadata = { alternates: { canonical: "/" } };
 
 const services = [
   { href: "/life-insurance", icon: ShieldCheck, title: "Life Insurance", text: "Term, whole life, mortgage protection, final expense and indexed universal life — matched to your budget." },
-  { href: "/credit-repair", icon: CreditCard, title: "Credit Repair", text: "We help you challenge inaccurate, incomplete or unverifiable items with Equifax, Experian and TransUnion, and track every dispute in your portal." },
+  CREDIT_REPAIR_OPEN && { href: "/credit-repair", icon: CreditCard, title: "Credit Repair", text: "We help you challenge inaccurate, incomplete or unverifiable items with Equifax, Experian and TransUnion, and track every dispute in your portal." },
   { href: "/tax-preparation", icon: FileText, title: "Tax Preparation", text: "Upload your W-2s and 1099s securely from your phone. We prepare and file your return and keep you updated." },
-];
+].filter(Boolean);
 
 const products = [
   ["Term Life", "Covers you for 10–30 years while the kids are young or the mortgage is open. Usually the lowest-cost way to get a large amount of coverage."],
@@ -44,13 +44,13 @@ export default function Home() {
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-24">
         <div>
           <p className="mb-6 inline-flex rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1.5 text-xs text-yellow-300 sm:text-sm">
-            Licensed in Texas · Life insurance · Credit repair · Tax preparation
+            Licensed in Texas · Life insurance{CREDIT_REPAIR_OPEN ? " · Credit repair" : ""} · Tax preparation
           </p>
           <h1 className="mb-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Protect your family. <span className="block text-yellow-400">Build the credit and finances to match.</span>
+            Protect your family. <span className="block text-yellow-400">{CREDIT_REPAIR_OPEN ? "Build the credit and finances to match." : "Keep your finances in order."}</span>
           </h1>
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-300">
-            Work with one local agent — {SITE.agent} — for life insurance, credit repair and tax preparation. Some life policies are available without a medical exam, and your first consultation is free.
+            Work with one local agent — {SITE.agent} — for {SERVICE_LIST}. Some life policies are available without a medical exam, and your first consultation is free.
           </p>
           <ul className="mb-10 space-y-4 text-lg">
             <li className="flex items-center gap-4"><ShieldCheck className="h-7 w-7 shrink-0 text-yellow-400" aria-hidden /> Coverage matched to your budget and goals</li>
@@ -73,8 +73,8 @@ export default function Home() {
       <section className="bg-cream py-20 text-ink" aria-labelledby="services-h">
         <div className="mx-auto max-w-7xl px-6">
           <h2 id="services-h" className="mb-4 text-center text-3xl font-black sm:text-5xl">Three ways we help</h2>
-          <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-ink-soft">Protection today, stronger credit tomorrow, and taxes done right — with one team that already knows you.</p>
-          <div className="grid gap-8 md:grid-cols-3">
+          <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-ink-soft">{CREDIT_REPAIR_OPEN ? "Protection today, stronger credit tomorrow, and taxes done right" : "Protection today and taxes done right"} — with one team that already knows you.</p>
+          <div className={`grid gap-8 ${services.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
             {services.map(({ href, icon: Icon, title, text }) => (
               <Link key={href} href={href} className="group rounded-3xl border border-yellow-200 bg-white p-8 shadow-xl transition hover:-translate-y-1">
                 <Icon className="mb-5 h-10 w-10 text-yellow-600" aria-hidden />

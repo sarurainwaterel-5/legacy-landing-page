@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { SERVICES } from "@/lib/site";
+import { CREDIT_REPAIR_OPEN, SERVICES } from "@/lib/site";
 import { AGREEMENTS } from "@/lib/agreements";
 import { formatDate } from "@/lib/format";
 import StatusBadge from "@/components/StatusBadge";
@@ -56,7 +56,7 @@ export default async function PortalHome() {
                   <StatusBadge status={c.status} />
                 </div>
                 {c.updates[0] && <p className="mt-1 text-sm text-zinc-600">{formatDate(c.updates[0].createdAt)} — {c.updates[0].body}</p>}
-                {c.service === "credit_repair" && <Link href="/portal/credit" className="mt-2 inline-block text-sm font-medium text-wine-800 underline">See dispute progress</Link>}
+                {CREDIT_REPAIR_OPEN && c.service === "credit_repair" && <Link href="/portal/credit" className="mt-2 inline-block text-sm font-medium text-wine-800 underline">See dispute progress</Link>}
               </li>
             ))}
           </ul>
@@ -72,7 +72,7 @@ export default async function PortalHome() {
       </section>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Link href="/portal/documents" className="panel hover:border-yellow-500"><h2 className="font-semibold">Upload documents</h2><p className="text-sm text-zinc-600">W-2s, 1099s, ID, credit bureau letters — securely.</p></Link>
+        <Link href="/portal/documents" className="panel hover:border-yellow-500"><h2 className="font-semibold">Upload documents</h2><p className="text-sm text-zinc-600">W-2s, 1099s, ID and other paperwork — securely.</p></Link>
         <Link href="/portal/messages" className="panel hover:border-yellow-500"><h2 className="font-semibold">Message us</h2><p className="text-sm text-zinc-600">Questions? Send a secure message instead of email or text.</p></Link>
       </div>
 

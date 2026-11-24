@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { CREDIT_REPAIR_OPEN } from "@/lib/site";
 import SignOutButton from "@/components/SignOutButton";
 
 export const metadata = { title: "Client Portal", robots: { index: false } };
@@ -12,7 +13,7 @@ export default async function PortalLayout({ children }) {
   const nav = [
     ["/portal", "Overview"],
     ["/portal/documents", "Documents"],
-    ["/portal/credit", "Credit repair"],
+    ...(CREDIT_REPAIR_OPEN ? [["/portal/credit", "Credit repair"]] : []),
     ["/portal/agreements", "Agreements"],
     ["/portal/messages", unread ? `Messages (${unread})` : "Messages"],
   ];

@@ -1,12 +1,15 @@
+import { notFound } from "next/navigation";
 import ServicePage from "@/components/ServicePage";
+import { CREDIT_REPAIR_OPEN } from "@/lib/site";
 
-export const metadata = {
+export const metadata = !CREDIT_REPAIR_OPEN ? { title: "Page not found", robots: { index: false } } : {
   title: "Credit Repair in Texas — Dispute Inaccurate Credit Report Items",
   description: "Legacy Partners helps you dispute inaccurate, incomplete or unverifiable items with Equifax, Experian and TransUnion, and track every dispute in a secure client portal.",
   alternates: { canonical: "/credit-repair" },
 };
 
 export default function Page() {
+  if (!CREDIT_REPAIR_OPEN) notFound();
   return (
     <ServicePage
       eyebrow="Credit Repair"

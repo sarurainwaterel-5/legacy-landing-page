@@ -22,6 +22,8 @@ private Vercel Blob store.
   cancel button, and no fees before services are performed. Texas also requires Credit Services Organization
   registration and a surety bond (Tex. Fin. Code ch. 393) — set `NEXT_PUBLIC_CSO_REGISTRATION`. **Agreements can't be
   signed until the business address and CSO registration are set.** Have an attorney review `src/lib/agreements.js`.
+  Credit repair is **switched off** (hidden from the site, quote form, portal and admin) until
+  `NEXT_PUBLIC_CREDIT_REPAIR_OPEN=true` is set on Vercel and the site is redeployed.
 - Tax information may only be used for tax preparation unless the client signs a separate IRC § 7216 consent.
 - Tax preparers must keep a written information security plan (FTC Safeguards Rule / IRS Pub. 4557).
 
