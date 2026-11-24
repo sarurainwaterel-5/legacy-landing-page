@@ -2,7 +2,7 @@ import ServicePage from "@/components/ServicePage";
 
 export const metadata = {
   title: "Life Insurance in Texas — Term, Whole, Final Expense & More",
-  description: "Term life, whole life, mortgage protection, final expense and IUL for Texas families. Talk to licensed agent Lashane Johnson for a free consultation.",
+  description: "Term life, whole life, mortgage protection, final expense and IUL for Texas families. Talk to licensed agent Lashanae Johnson for a free consultation.",
   alternates: { canonical: "/life-insurance" },
 };
 

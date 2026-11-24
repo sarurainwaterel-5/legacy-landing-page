@@ -4,7 +4,7 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://legacypartners.agency",
   phone: "(214) 403-1712",
   phoneHref: "tel:+12144031712",
-  agent: "Lashane Johnson",
+  agent: "Lashanae Johnson",
   agentTitle: "Licensed Life Insurance Agent",
   state: "Texas",
   // Texas Department of Insurance agent license (verify at https://www.tdi.texas.gov/agent/agentlookup.html).

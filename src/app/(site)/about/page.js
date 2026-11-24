@@ -12,7 +12,7 @@ export default function About() {
       <p className="mb-5 text-lg leading-relaxed text-zinc-300">
         Legacy Partners helps families protect what matters, strengthen their credit and keep their finances in order. {SITE.agent} leads our team as a {SITE.agentTitle.toLowerCase()} in {SITE.state}.
       </p>
-      {/* TODO(owner): replace with Lashane's own story and a photo (public/lashane.jpg). */}
+      {/* TODO(owner): replace with Lashanae's own story and a photo (public/lashanae.jpg). */}
       <p className="mb-5 text-lg leading-relaxed text-zinc-300">
         We believe financial protection shouldn't be confusing. We explain your options in plain English, never pressure you, and stay with you after the paperwork is done.
       </p>

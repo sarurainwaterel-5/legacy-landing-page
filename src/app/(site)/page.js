@@ -22,7 +22,7 @@ const products = [
 
 const steps = [
   ["Tell us about you", "Fill in the short form or call us. It takes about 2 minutes."],
-  ["Talk with Lashane", "A free, no-pressure 30-minute call to understand your goals and budget."],
+  ["Talk with Lashanae", "A free, no-pressure 30-minute call to understand your goals and budget."],
   ["Get your options", "We walk you through the options that fit, in plain English."],
 ];
 
