@@ -13,7 +13,7 @@ export default async function AdminLayout({ children }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <Link href="/admin" className="flex items-center gap-3"><Image src="/logo.webp" alt="" width={36} height={36} /><span className="font-semibold">Legacy Partners <span className="font-normal text-yellow-400">Admin</span></span></Link>
           <nav aria-label="Admin" className="flex items-center gap-1 text-sm">
-            {[["/admin", "Overview"], ["/admin/leads", "Leads"], ["/admin/clients", "Clients"], ["/portal", "My portal"]].map(([href, label]) => (
+            {[["/admin", "Overview"], ["/admin/leads", "Leads"], ["/admin/clients", "Clients"], ["/admin/activity", "Activity"], ["/portal", "My portal"]].map(([href, label]) => (
               <Link key={href} href={href} className="rounded-lg px-3 py-1.5 hover:bg-white/10">{label}</Link>
             ))}
             <span className="ml-2 hidden text-zinc-400 md:inline">{session.user.email}</span>
